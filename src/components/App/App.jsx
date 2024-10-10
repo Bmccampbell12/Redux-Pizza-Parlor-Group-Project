@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from "react";
 import "./App.css";
 import PizzaList from "../PizzaList/PizzaList";
@@ -7,6 +8,20 @@ import Checkout from "../Checkout/Checkout";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 
 function App() {
+  const dispatch = useDispatch()
+
+  const fetchPizzaList = () => {
+    axios
+      .get("/api/pizza")
+      .then((response) => {
+        dispatch({ type: `SET_PIZZA_LIST`, payload: response.data });
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(`Couldn't get pizza.`);
+      });
+  };
+
   return (
     <Router>
       <div className="App">
@@ -15,13 +30,13 @@ function App() {
         </header>
         <img src="images/pizza_photo.png" />
         <Route path="/" exact>
-          <PizzaList />
+          <PizzaList fetchPizzaList={fetchPizzaList} />
         </Route>
         <Route path="/userInfo">
           <PizzaForm />
         </Route>
         <Route path="/checkout">
-          <Checkout />
+          <Checkout fetchPizzaList={fetchPizzaList} />
         </Route>
       </div>
     </Router>

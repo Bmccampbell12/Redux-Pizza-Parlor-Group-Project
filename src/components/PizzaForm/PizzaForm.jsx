@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Price from "../Price/Price";
-import axios from "axios";
 
 export default function PizzaForm() {
   const dispatch = useDispatch();

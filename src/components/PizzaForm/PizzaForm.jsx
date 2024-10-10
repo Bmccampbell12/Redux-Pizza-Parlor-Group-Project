@@ -71,7 +71,7 @@ export default function PizzaForm() {
         <input
           type="radio"
           id="Delivery"
-          name="Delivery"
+          name="pizza"
           value="Delivery"
           onClick={handleTypeInput}
         />
@@ -79,7 +79,7 @@ export default function PizzaForm() {
         <input
           type="radio"
           id="Pickup"
-          name="Pickup"
+          name="pizza"
           value="Pickup"
           onClick={handleTypeInput}
         />

@@ -1,14 +1,14 @@
-import axios from 'axios';
 import React from "react";
 import "./App.css";
 import PizzaList from "../PizzaList/PizzaList";
 import PizzaForm from "../PizzaForm/PizzaForm";
 import Checkout from "../Checkout/Checkout";
-
+import axios from "axios";
+import { useDispatch } from "react-redux";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const fetchPizzaList = () => {
     axios

@@ -41,10 +41,10 @@ useEffect(() => {
         <tbody>
            {orderData.map((order) => {
             return <tr key={order.id}>
-                <td>{customer_name.id}</td>
-                <td>{time.id}</td>
-                <td>{type.id}</td>
-                <td>{total.id}</td>
+                <td>{order.customer_name}</td>
+                <td>{order.time}</td>
+                <td>{order.type}</td>
+                <td>{order.total}</td>
             </tr>
            })}
         </tbody>

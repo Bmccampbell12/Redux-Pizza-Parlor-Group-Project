@@ -8,9 +8,19 @@ const userInfo = (state = [], action) => {
   return state;
 };
 
+const price = (state = 0, action) => {
+  if (action.type === "ADD_PRICE") {
+    return state + action.payload;
+  } else if (action.type === "REDUCE_PRICE") {
+    return state - action.payload;
+  }
+  return state;
+};
+
 const store = createStore(
   combineReducers({
-    userInfo, 
+    userInfo,
+    price,
   }),
   applyMiddleware(logger)
 );

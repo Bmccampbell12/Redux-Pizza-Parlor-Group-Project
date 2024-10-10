@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 import Price from "../Price/Price";
 
 export default function PizzaForm() {
@@ -18,7 +18,7 @@ export default function PizzaForm() {
   const handleNameInput = (event) => {
     setUserInfo({
       ...userInfo,
-      name: event.target.value,
+      customer_name: event.target.value,
     });
   };
   const handleStreetInput = (event) => {
@@ -52,18 +52,22 @@ export default function PizzaForm() {
       type: "ADD_USERINFO",
       payload: userInfo,
     });
-  };
-
-  const handleNext = () => {
     history.push("/checkout");
   };
+
+  // const handleNext = () => {
+  // };
 
   return (
     <>
       <Price />
       <form onSubmit={handleUserInfo}>
         <input type="text" onChange={handleNameInput} placeholder="Name" />
-        <input type="text" onChange={handleStreetInput} placeholder="Street Address" />
+        <input
+          type="text"
+          onChange={handleStreetInput}
+          placeholder="Street Address"
+        />
         <input type="text" onChange={handleCityInput} placeholder="City" />
         <input type="text" onChange={handleZipInput} placeholder="Zip Code" />
         <input
@@ -82,7 +86,7 @@ export default function PizzaForm() {
           onClick={handleTypeInput}
         />
         <label htmlFor="Pickup">Pickup</label>
-        <button type="submit" onClick={handleNext}>
+        <button type="submit">
           NEXT
         </button>
       </form>

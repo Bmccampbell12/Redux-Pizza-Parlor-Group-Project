@@ -1,20 +1,19 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
+import Price from "../Price/Price";
+import PizzaItem from "../PizzaItem/PizzaItem";
 
-function PizzaList() {
-    const [newPizza, setNewPizza] = useState({ name: "", price: 0 });
-  
-    const pizzaList = useSelector((store) => store.pizzaList);
-    const history = useHistory();
-  
-    const dispatch = useDispatch();
-  
-    useEffect(() => {
-      fetchPizzaList();
-    }, []);
+export default function PizzaList() {
+  const pizzaList = useSelector((store) => store.pizzaList);
+  const history = useHistory();
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    fetchPizzaList();
+  }, []);
 
   const fetchPizzaList = () => {
     axios
@@ -27,55 +26,26 @@ function PizzaList() {
         alert(`Couldn't get pizza.`);
       });
   };
-  
-  const storePizza = (pizza) => {
-    setNewPizza({
-      name: pizza.name,
-      price: pizza.price,
-    });
-    dispatch({ type: "ADD_PIZZA", payload: newPizza });
-  };
 
-  const removePizza = () => {
-    dispatch({
-      
-    })
-  }
-
-
-  // Check this
+  //! Add url for router
   const customerInfo = () => {
-    history.push("/customerinfo");
+    history.push("/userInfo");
   };
-
-  console.log(newPizza);
 
   return (
     <div id="App">
       <h3>Choose Your Pizza:</h3>
+      <h4>
+        <Price />
+      </h4>
       <table>
         <tbody id="list">
           {pizzaList.map((pizza, index) => (
-            <tr id="rows" key={index}>
-              <td id="names">{pizza.name}</td>
-              <td id="description">{pizza.description}</td>
-              <td id="price">{pizza.price} </td>
-              <td id="button">
-                <button onClick={() => storePizza(pizza)}>Add</button>
-                <button onClick={removePizza}>Remove</button>
-                {/* <Button variant="contained" onClick={() => storePizza(pizza)}>
-                  Order
-                </Button>{""} */}
-              </td>
-            </tr>
+            <PizzaItem key={index} pizza={pizza} />
           ))}
         </tbody>
       </table>
-          <button onClick={customerInfo}>NEXT</button>
-      {/* <Button id="customer-info" variant="contained" onClick={customerInfo}>
-        {" "}
-        Next
-      </Button> */}
+      <button onClick={customerInfo}>NEXT</button>
     </div>
   );
 }

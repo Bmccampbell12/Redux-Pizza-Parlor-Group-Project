@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Price from "../Price/Price";
+import axios from "axios";
 
 export default function PizzaForm() {
   const dispatch = useDispatch();
@@ -52,12 +53,10 @@ export default function PizzaForm() {
       type: "ADD_USERINFO",
       payload: userInfo,
     });
-    event.target.reset();
   };
 
-  //! Need to add the router url
   const handleNext = () => {
-    history.push("//");
+    history.push("/checkout");
   };
 
   return (
@@ -65,25 +64,25 @@ export default function PizzaForm() {
       <Price />
       <form onSubmit={handleUserInfo}>
         <input type="text" onChange={handleNameInput} placeholder="Name" />
-        <input type="text" onChange={handleStreetInput} placeholder="Name" />
-        <input type="text" onChange={handleCityInput} placeholder="Name" />
-        <input type="text" onChange={handleZipInput} placeholder="Name" />
+        <input type="text" onChange={handleStreetInput} placeholder="Street Address" />
+        <input type="text" onChange={handleCityInput} placeholder="City" />
+        <input type="text" onChange={handleZipInput} placeholder="Zip Code" />
         <input
           type="radio"
           id="Delivery"
-          name="Delivery"
+          name="pizza"
           value="Delivery"
           onClick={handleTypeInput}
         />
-        <label for="Delivery">Delivery</label>
+        <label htmlFor="Delivery">Delivery</label>
         <input
           type="radio"
           id="Pickup"
-          name="Pickup"
+          name="pizza"
           value="Pickup"
           onClick={handleTypeInput}
         />
-        <label for="Pickup">Pickup</label>
+        <label htmlFor="Pickup">Pickup</label>
         <button type="submit" onClick={handleNext}>
           NEXT
         </button>

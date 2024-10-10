@@ -29,7 +29,7 @@ export default function PizzaList() {
 
   //! Add url for router
   const customerInfo = () => {
-    history.push("/");
+    history.push("/userInfo");
   };
 
   return (

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Price from "../Price/Price";
+import axios from "axios";
 
 export default function PizzaForm() {
   const dispatch = useDispatch();
@@ -52,12 +53,10 @@ export default function PizzaForm() {
       type: "ADD_USERINFO",
       payload: userInfo,
     });
-    event.target.reset();
   };
 
-  //! Need to add the router url
   const handleNext = () => {
-    history.push("//");
+    history.push("/checkout");
   };
 
   return (

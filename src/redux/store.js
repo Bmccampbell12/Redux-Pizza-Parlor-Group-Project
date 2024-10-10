@@ -10,9 +10,9 @@ const userInfo = (state = [], action) => {
 
 const price = (state = 0, action) => {
   if (action.type === "ADD_PRICE") {
-    return state + Number(action.payload);
+    return Number(state + Number(action.payload));
   } else if (action.type === "REDUCE_PRICE") {
-    return state - action.payload;
+    return Number(state - action.payload);
   }
   return state;
 };

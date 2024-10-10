@@ -1,35 +1,37 @@
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import Price from "../Price/Price";
 
 function Checkout() {
-  const dispatch = useDispatch();
-  const pizza = useSelector((store) => store.addedPizza);
+  const pizzaCart = useSelector((store) => store.pizzaCart);
   const history = useHistory();
-  const submit = () => {
+
+  const handleSubmit = () => {
     history.push("/");
   };
 
   return (
-    <div>
-      <h3>Checkout</h3>
-      <table>
-        <tbody id="orders">
-          <tr>
-            <th>Name</th>
-            <th>Cost</th>
-          </tr>
-          <tr>
-            <td>{pizza.name}</td>
-            <td>${pizza.price}</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <Button id="select-pizza" variant="contained" onClick={submit}>
-        {" "}
-        purchase
-      </Button>
-    </div>
+    <>
+      <div>
+        <h3>Checkout</h3>
+        <table>
+          <tbody id="orders">
+            <tr>
+              <th>Name</th>
+              <th>Cost</th>
+            </tr>
+            {pizzaCart.map((pizza, index) => (
+              <tr key={index}>
+                <td>{pizza.name}</td>
+                <td>${pizza.price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        Total Price: <Price />
+        <button onClick={handleSubmit}>CHECKOUT</button>
+      </div>
+    </>
   );
 }
 

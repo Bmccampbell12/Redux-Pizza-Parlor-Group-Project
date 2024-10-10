@@ -6,6 +6,7 @@ import Checkout from "../Checkout/Checkout";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
+import Admin from "../Admin/Admin";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <Route path="/checkout">
           <Checkout fetchPizzaList={fetchPizzaList} />
+        </Route>
+        <Route path="/admin">
+        <Admin />
         </Route>
       </div>
     </Router>

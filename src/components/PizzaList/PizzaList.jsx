@@ -24,8 +24,8 @@ export default function PizzaList({fetchPizzaList}) {
       </h4>
       <table>
         <tbody id="list">
-          {pizzaList.map((pizza, index) => (
-            <PizzaItem key={index} pizza={pizza} />
+          {pizzaList.map((pizza) => (
+            <PizzaItem key={pizza.id} pizza={pizza} />
           ))}
         </tbody>
       </table>

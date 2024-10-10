@@ -1,13 +1,23 @@
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector } from "react-redux";
 import Price from "../Price/Price";
+import axios from "axios";
 
-function Checkout() {
+function Checkout({fetchPizzaList}) {
   const pizzaCart = useSelector((store) => store.pizzaCart);
   const history = useHistory();
 
   const handleSubmit = () => {
-    history.push("/");
+    axios
+      .post("api/pizza", {})
+      .then((response) => {
+        history.push("/");
+        // Clear reducers here
+        fetchPizzaList()
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   return (

@@ -1,33 +1,18 @@
 import axios from "axios";
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Price from "../Price/Price";
 import PizzaItem from "../PizzaItem/PizzaItem";
 
-export default function PizzaList() {
+export default function PizzaList({fetchPizzaList}) {
   const pizzaList = useSelector((store) => store.pizzaList);
   const history = useHistory();
-
-  const dispatch = useDispatch()
 
   useEffect(() => {
     fetchPizzaList();
   }, []);
 
-  const fetchPizzaList = () => {
-    axios
-      .get("/api/pizza")
-      .then((response) => {
-        dispatch({ type: `SET_PIZZA_LIST`, payload: response.data });
-      })
-      .catch((err) => {
-        console.log(err);
-        alert(`Couldn't get pizza.`);
-      });
-  };
-
-  //! Add url for router
   const customerInfo = () => {
     history.push("/userInfo");
   };

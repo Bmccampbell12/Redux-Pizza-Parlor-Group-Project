@@ -20,6 +20,7 @@ export default function PizzaItem({ pizza }) {
     dispatch({ type: "REDUCE_PRICE", payload: pizza.price });
     changeCart(pizza);
   };
+  
   return (
     <tr id="rows">
       <td id="names">{pizza.name}</td>

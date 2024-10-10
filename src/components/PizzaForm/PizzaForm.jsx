@@ -5,6 +5,8 @@ import Price from "../Price/Price";
 
 export default function PizzaForm() {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [userInfo, setUserInfo] = useState({
     customer_name: "",
     street_address: "",

@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
 
 function PizzaList() {
-    const [newPizza, setnewPizza] = useState({ name: "", price: 0 });
+    const [newPizza, setNewPizza] = useState({ name: "", price: 0 });
   
     const pizzaList = useSelector((store) => store.pizzaList);
     const history = useHistory();
@@ -29,14 +29,22 @@ function PizzaList() {
   };
   
   const storePizza = (pizza) => {
-    setnewPizza({
+    setNewPizza({
       name: pizza.name,
       price: pizza.price,
     });
+    dispatch({ type: "ADD_PIZZA", payload: newPizza });
   };
 
+  const removePizza = () => {
+    dispatch({
+      
+    })
+  }
+
+
+  // Check this
   const customerInfo = () => {
-    dispatch({ type: "ADD_PIZZA", payload: newPizza });
     history.push("/customerinfo");
   };
 
@@ -53,19 +61,21 @@ function PizzaList() {
               <td id="description">{pizza.description}</td>
               <td id="price">{pizza.price} </td>
               <td id="button">
-                <Button variant="contained" onClick={() => storePizza(pizza)}>
+                <button onClick={() => storePizza(pizza)}>Add</button>
+                <button onClick={removePizza}>Remove</button>
+                {/* <Button variant="contained" onClick={() => storePizza(pizza)}>
                   Order
-                </Button>{""}
+                </Button>{""} */}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-
-      <Button id="customer-info" variant="contained" onClick={customerInfo}>
+          <button onClick={customerInfo}>NEXT</button>
+      {/* <Button id="customer-info" variant="contained" onClick={customerInfo}>
         {" "}
         Next
-      </Button>
+      </Button> */}
     </div>
   );
 }

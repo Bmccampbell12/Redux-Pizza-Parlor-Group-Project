@@ -65,9 +65,9 @@ export default function PizzaForm() {
       <Price />
       <form onSubmit={handleUserInfo}>
         <input type="text" onChange={handleNameInput} placeholder="Name" />
-        <input type="text" onChange={handleStreetInput} placeholder="Name" />
-        <input type="text" onChange={handleCityInput} placeholder="Name" />
-        <input type="text" onChange={handleZipInput} placeholder="Name" />
+        <input type="text" onChange={handleStreetInput} placeholder="Street Address" />
+        <input type="text" onChange={handleCityInput} placeholder="City" />
+        <input type="text" onChange={handleZipInput} placeholder="Zip Code" />
         <input
           type="radio"
           id="Delivery"
@@ -75,7 +75,7 @@ export default function PizzaForm() {
           value="Delivery"
           onClick={handleTypeInput}
         />
-        <label for="Delivery">Delivery</label>
+        <label htmlFor="Delivery">Delivery</label>
         <input
           type="radio"
           id="Pickup"
@@ -83,7 +83,7 @@ export default function PizzaForm() {
           value="Pickup"
           onClick={handleTypeInput}
         />
-        <label for="Pickup">Pickup</label>
+        <label htmlFor="Pickup">Pickup</label>
         <button type="submit" onClick={handleNext}>
           NEXT
         </button>

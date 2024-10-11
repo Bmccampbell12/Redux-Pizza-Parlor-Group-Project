@@ -1,0 +1,35 @@
+#header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(70, 176, 128);
+    height: 100px;
+  }
+  
+  header {
+    color: white;
+    font-size: x-large;
+    font-weight: 600;
+  }
+  
+  header {
+    margin-left: 30px;
+  }
+  .body {
+    height: 100vh;
+    background-color:rgba(204, 255, 232, 0.726);
+}
+  
+ul {
+list-style-type: none;
+}
+
+.addressBox {
+  display: flex;
+  justify-content: center;
+}
+#userInfo{
+  display: flex;
+  justify-content: center;
+}

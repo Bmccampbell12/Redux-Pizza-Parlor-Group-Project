@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import './Admin.css'
 
 function Admin() {
   // useState to store the GET data
@@ -25,7 +26,10 @@ function Admin() {
   // Destructure and display the data via .map in the return
 
   return (
-    <div>
+    <div class="body">
+      <div id="header">
+        <header>Prime Pizza Orders</header>
+      </div>
       <table>
         <thead>
           <tr>
@@ -48,7 +52,7 @@ function Admin() {
           })}
         </tbody>
       </table>
-    </div>
+      </div>
   );
 }
 

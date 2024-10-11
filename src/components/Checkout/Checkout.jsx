@@ -1,16 +1,16 @@
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Price from "../Price/Price";
 import axios from "axios";
 
-function Checkout({fetchPizzaList}) {
+function Checkout({ fetchPizzaList }) {
   const pizzaCart = useSelector((store) => store.pizzaCart);
-  const price = useSelector((store) => store.price)
-  const userInfo = useSelector((store) => store.userInfo)
+  const price = useSelector((store) => store.price);
+  const userInfo = useSelector((store) => store.userInfo);
 
   const history = useHistory();
 
-  let currentUserInfo = userInfo[0]
+  let currentUserInfo = userInfo[0];
 
   let pizzaData = {
     pizzas: pizzaCart,
@@ -19,21 +19,20 @@ function Checkout({fetchPizzaList}) {
     street_address: currentUserInfo.street_address,
     city: currentUserInfo.city,
     zip: currentUserInfo.zip,
-    type: currentUserInfo.type
-  }
-  
-const dispatch = useDispatch()
+    type: currentUserInfo.type,
+  };
 
+  const dispatch = useDispatch();
 
   const handleSubmit = () => {
     axios
       .post("/api/order", pizzaData)
-      .then((response) => { 
+      .then((response) => {
         history.push("/");
         // Clear reducers here
         dispatch({
-          type: "RESET"
-        })
+          type: "RESET",
+        });
         // fetchPizzaList()
       })
       .catch((err) => {
@@ -41,10 +40,22 @@ const dispatch = useDispatch()
       });
   };
 
+  // TODO: Add user information onto the checkout page
+
   return (
     <>
       <div>
         <h3>Checkout</h3>
+        <div id="userInfo">
+          <ul>
+            <li>{currentUserInfo.customer_name}</li>
+            <li>{currentUserInfo.street_address}</li>
+            <li>{currentUserInfo.city}, {currentUserInfo.zip}</li>
+          </ul>
+        </div>
+        <div id="deliveryType">
+          <p>{currentUserInfo.type}</p>
+        </div>
         <table>
           <tbody id="orders">
             <tr>

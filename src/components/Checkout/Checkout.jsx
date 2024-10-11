@@ -2,6 +2,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector, useDispatch } from "react-redux";
 import Price from "../Price/Price";
 import axios from "axios";
+import './Checkout.css'
 
 function Checkout({ fetchPizzaList }) {
   const pizzaCart = useSelector((store) => store.pizzaCart);
@@ -43,6 +44,9 @@ function Checkout({ fetchPizzaList }) {
   return (
     <>
       <div>
+        <div id="header">
+        <header>Prime Pizza</header>
+        </div>
         <h3>Checkout</h3>
         <div id="userInfo">
           <ul>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Price from "../Price/Price";
+import './PizzaForm.css'
 
 export default function PizzaForm() {
   const dispatch = useDispatch();
@@ -57,7 +58,14 @@ export default function PizzaForm() {
 
   return (
     <>
-      <Price />
+    <div id="header">
+      <header>
+        Prime Pizza
+        </header>
+        <div id="price">
+          <Price />
+        </div>
+      </div>
       <form onSubmit={handleUserInfo}>
         <input type="text" onChange={handleNameInput} placeholder="Name" />
         <input

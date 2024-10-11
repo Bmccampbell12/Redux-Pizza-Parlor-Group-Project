@@ -1,0 +1,24 @@
+#header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(70, 176, 128);
+    height: 100px;
+  }
+  
+  header,
+  #price {
+    color: white;
+    font-size: x-large;
+    font-weight: 600;
+  }
+  
+  header {
+    margin-left: 30px;
+  }
+  
+  #price {
+    margin-right: 30px;
+  }
+  

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import './Admin.css'
 
 function Admin() {
   // useState to store the GET data
@@ -26,6 +27,9 @@ function Admin() {
 
   return (
     <div>
+      <div id="header">
+        <header>Prime Pizza Orders</header>
+      </div>
       <table>
         <thead>
           <tr>

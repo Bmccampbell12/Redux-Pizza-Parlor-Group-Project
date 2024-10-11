@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import Price from "../Price/Price";
 import PizzaItem from "../PizzaItem/PizzaItem";
 
-export default function PizzaList({fetchPizzaList}) {
+export default function PizzaList({ fetchPizzaList }) {
   const pizzaList = useSelector((store) => store.pizzaList);
   const history = useHistory();
 

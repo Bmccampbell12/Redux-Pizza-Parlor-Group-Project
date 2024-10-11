@@ -55,9 +55,6 @@ export default function PizzaForm() {
     history.push("/checkout");
   };
 
-  // const handleNext = () => {
-  // };
-
   return (
     <>
       <Price />
@@ -86,9 +83,7 @@ export default function PizzaForm() {
           onClick={handleTypeInput}
         />
         <label htmlFor="Pickup">Pickup</label>
-        <button type="submit">
-          NEXT
-        </button>
+        <button type="submit">NEXT</button>
       </form>
     </>
   );

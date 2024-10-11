@@ -40,8 +40,6 @@ function Checkout({ fetchPizzaList }) {
       });
   };
 
-  // TODO: Add user information onto the checkout page
-
   return (
     <>
       <div>
@@ -50,7 +48,9 @@ function Checkout({ fetchPizzaList }) {
           <ul>
             <li>{currentUserInfo.customer_name}</li>
             <li>{currentUserInfo.street_address}</li>
-            <li>{currentUserInfo.city}, {currentUserInfo.zip}</li>
+            <li>
+              {currentUserInfo.city}, {currentUserInfo.zip}
+            </li>
           </ul>
         </div>
         <div id="deliveryType">

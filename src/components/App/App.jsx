@@ -36,7 +36,7 @@ function App() {
           <Checkout fetchPizzaList={fetchPizzaList} />
         </Route>
         <Route path="/admin">
-        <Admin />
+          <Admin />
         </Route>
       </div>
     </Router>

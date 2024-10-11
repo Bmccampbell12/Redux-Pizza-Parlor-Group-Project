@@ -1,6 +1,13 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+
 export default function PizzaItem({ pizza }) {
   const [inCart, setInCart] = useState(false);
   const dispatch = useDispatch();
@@ -23,16 +30,28 @@ export default function PizzaItem({ pizza }) {
 
   return (
     <tr id="rows">
-      <td id="names">{pizza.name}</td>
-      <td id="description">{pizza.description}</td>
-      <td id="price">{pizza.price} </td>
-      <td id="button">
-        {inCart === false ? (
-          <button onClick={() => addPizza(pizza)}>Add</button>
+      <Card sx={{ width: 345, marginRight:10, marginLeft:10, marginBottom: 5, boxShadow: 3 }}>
+      <CardMedia
+        sx={{ height: 240 }}
+        image={pizza.image_path}
+        title={pizza.name}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {pizza.name}
+        </Typography>
+        <Typography variant="body2" sx={{ color: 'text.secondary', height: 100 }}>
+          {pizza.description}: {pizza.price}
+        </Typography>
+      </CardContent>
+      <CardActions>
+      {inCart === false ? (
+          <Button onClick={() => addPizza(pizza)}>Add</Button>
         ) : (
-          <button onClick={() => removePizza(pizza)}>Remove</button>
+          <Button onClick={() => removePizza(pizza)}>Remove</Button>
         )}
-      </td>
+      </CardActions>
+    </Card>
     </tr>
   );
 }

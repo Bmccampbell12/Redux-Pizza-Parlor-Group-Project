@@ -16,6 +16,20 @@
   header {
     margin-left: 30px;
   }
+  .body {
+    height: 100vh;
+    background-color:rgba(204, 255, 232, 0.726);
+}
   
+ul {
+list-style-type: none;
+}
 
-  
+.addressBox {
+  display: flex;
+  justify-content: center;
+}
+#userInfo{
+  display: flex;
+  justify-content: center;
+}

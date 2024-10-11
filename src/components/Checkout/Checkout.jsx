@@ -2,7 +2,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector, useDispatch } from "react-redux";
 import Price from "../Price/Price";
 import axios from "axios";
-import './Checkout.css'
+import "./Checkout.css";
 
 function Checkout({ fetchPizzaList }) {
   const pizzaCart = useSelector((store) => store.pizzaCart);
@@ -45,37 +45,41 @@ function Checkout({ fetchPizzaList }) {
     <>
       <div>
         <div id="header">
-        <header>Prime Pizza</header>
+          <header>Prime Pizza</header>
         </div>
-        <h3>Checkout</h3>
-        <div id="userInfo">
-          <ul>
-            <li>{currentUserInfo.customer_name}</li>
-            <li>{currentUserInfo.street_address}</li>
-            <li>
-              {currentUserInfo.city}, {currentUserInfo.zip}
-            </li>
-          </ul>
-        </div>
-        <div id="deliveryType">
-          <p>{currentUserInfo.type}</p>
-        </div>
-        <table>
-          <tbody id="orders">
-            <tr>
-              <th>Name</th>
-              <th>Cost</th>
-            </tr>
-            {pizzaCart.map((pizza, index) => (
-              <tr key={index}>
-                <td>{pizza.name}</td>
-                <td>${pizza.price}</td>
+        <div class="body">
+          <div class="addressBox">
+          <h3>Checkout</h3>
+          <div id="userInfo">
+            <ul>
+              <li>{currentUserInfo.customer_name}</li>
+              <li>{currentUserInfo.street_address}</li>
+              <li>
+                {currentUserInfo.city}, {currentUserInfo.zip}
+              </li>
+            </ul>
+          </div>
+          <div id="deliveryType">
+            <p>{currentUserInfo.type}</p>
+          </div>
+          </div>
+          <table>
+            <tbody id="orders">
+              <tr>
+                <th>Name</th>
+                <th>Cost</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        Total Price: <Price />
-        <button onClick={handleSubmit}>CHECKOUT</button>
+              {pizzaCart.map((pizza, index) => (
+                <tr key={index}>
+                  <td>{pizza.name}</td>
+                  <td>${pizza.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          Total Price: <Price />
+          <button onClick={handleSubmit}>CHECKOUT</button>
+        </div>
       </div>
     </>
   );

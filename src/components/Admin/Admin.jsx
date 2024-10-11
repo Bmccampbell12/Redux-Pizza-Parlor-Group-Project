@@ -26,7 +26,7 @@ function Admin() {
   // Destructure and display the data via .map in the return
 
   return (
-    <div>
+    <div class="body">
       <div id="header">
         <header>Prime Pizza Orders</header>
       </div>
@@ -52,7 +52,7 @@ function Admin() {
           })}
         </tbody>
       </table>
-    </div>
+      </div>
   );
 }
 

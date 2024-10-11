@@ -2,7 +2,15 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Price from "../Price/Price";
-import './PizzaForm.css'
+import "./PizzaForm.css";
+
+import { TextField } from "@mui/material";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import Button from '@mui/material/Button';
 
 export default function PizzaForm() {
   const dispatch = useDispatch();
@@ -58,41 +66,68 @@ export default function PizzaForm() {
 
   return (
     <>
-    <div id="header">
-      <header>
-        Prime Pizza
-        </header>
-        <div id="price">
-          <Price />
+      <div class="body">
+        <div id="header">
+          <header>Prime Pizza</header>
+          <div id="price">
+            <Price />
+          </div>
         </div>
+        <form onSubmit={handleUserInfo}>
+          <TextField
+            id="filled-basic"
+            variant="filled"
+            type="text"
+            onChange={handleNameInput}
+            placeholder="Name"
+            sx={{ backgroundColor: "white", margin: 1 }}
+          ></TextField>
+          <TextField
+            id="filled-basic"
+            variant="filled"
+            type="text"
+            onChange={handleStreetInput}
+            placeholder="Street Address"
+            sx={{ backgroundColor: "white", margin: 1 }}
+          ></TextField>
+          <TextField
+            id="filled-basic"
+            variant="filled"
+            type="text"
+            onChange={handleCityInput}
+            placeholder="City"
+            sx={{ backgroundColor: "white", margin: 1 }}
+          ></TextField>
+          <TextField
+            id="filled-basic"
+            variant="filled"
+            type="text"
+            onChange={handleZipInput}
+            placeholder="Zip Code"
+            sx={{ backgroundColor: "white", margin: 1 }}
+          ></TextField>
+
+          <FormControl sx={{margin: 1}}>
+            <FormLabel id="type">Delivery or Pickup</FormLabel>
+            <RadioGroup aria-labelledby="type" name="radio-buttons-group">
+              <FormControlLabel
+                value="Delivery"
+                control={<Radio />}
+                label="Delivery"
+                onClick={handleTypeInput}
+              />
+              <FormControlLabel
+                value="Pickup"
+                control={<Radio />}
+                label="Pickup"
+                onClick={handleTypeInput}
+              />
+            </RadioGroup>
+          </FormControl>
+
+          <Button type="submit">NEXT</Button>
+        </form>
       </div>
-      <form onSubmit={handleUserInfo}>
-        <input type="text" onChange={handleNameInput} placeholder="Name" />
-        <input
-          type="text"
-          onChange={handleStreetInput}
-          placeholder="Street Address"
-        />
-        <input type="text" onChange={handleCityInput} placeholder="City" />
-        <input type="text" onChange={handleZipInput} placeholder="Zip Code" />
-        <input
-          type="radio"
-          id="Delivery"
-          name="pizza"
-          value="Delivery"
-          onClick={handleTypeInput}
-        />
-        <label htmlFor="Delivery">Delivery</label>
-        <input
-          type="radio"
-          id="Pickup"
-          name="pizza"
-          value="Pickup"
-          onClick={handleTypeInput}
-        />
-        <label htmlFor="Pickup">Pickup</label>
-        <button type="submit">NEXT</button>
-      </form>
     </>
   );
 }

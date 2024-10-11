@@ -16,6 +16,9 @@
   header {
     margin-left: 30px;
   }
-  
+  .body {
+    height: 100vh;
+    background-color:rgba(204, 255, 232, 0.726);
+}
 
   
